@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Road+Rage&display=swap');
+
+:root {
+  --background: #ffffff;
+  --foreground: #0a0a0a;
+  --rock-shadow: 0 20px 50px rgba(132, 132, 132, 0.089);
+  --accent: #555;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: "Annie Use Your Telescope", cursive;
+  overflow: hidden;
+  /* Prevent scroll */
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  background: radial-gradient(circle at center, #ffffff 0%, #c9c9c9 100%);
+}
+
+.rock-container {
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.1s ease-out;
+  z-index: 10;
+}
+
+.rock-container:active {
+  transform: scale(0.98);
+}
+
+.rock-image {
+  width: 300px;
+  /* Adjust based on image aspect ratio */
+  height: auto;
+  filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.8));
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.rock-container:hover .rock-image {
+  transform: translateY(-5px);
+  filter: drop-shadow(0 40px 70px rgba(0, 0, 0, 0.9));
+}
+
+.advice-text {
+  margin-top: 40px;
+  font-size: 1.5rem;
+  text-align: center;
+  max-width: 600px;
+  min-height: 100px;
+  /* Reserve space */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  color: rgba(0, 0, 0, 0.9);
+  text-shadow: 0 2px 4px rgba(178, 178, 178, 0.5);
+}
+
+.advice-text.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.instruction {
+  font-family: "Road Rage", sans-serif;
+  position: absolute;
+  bottom: 50px;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  color: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  animation: pulse 3s infinite;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+
+  50% {
+    opacity: 0.6;
+  }
+}
+
+/* Loading/Speaking Animation */
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
+}
+
+.rock-speaking {
+  animation: shake 0.5s;
+  animation-iteration-count: infinite;
+}
