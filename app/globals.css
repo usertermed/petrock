@@ -6,6 +6,16 @@
   --foreground: #0a0a0a;
   --rock-shadow: 0 20px 50px rgba(132, 132, 132, 0.089);
   --accent: #555;
+  --glow: rgba(255, 255, 255, 0.5);
+  --container-bg: radial-gradient(circle at center, #ffffff 0%, #c9c9c9 100%);
+}
+
+[data-theme='dark'] {
+  --background: #111;
+  --foreground: #eee;
+  --accent: #888;
+  --glow: rgba(255, 255, 255, 0.2);
+  --container-bg: radial-gradient(circle at center, #222 0%, #000 100%);
 }
 
 body {
@@ -30,7 +40,8 @@ body {
   height: 100%;
   width: 100%;
   position: relative;
-  background: radial-gradient(circle at center, #ffffff 0%, #c9c9c9 100%);
+  background: var(--container-bg);
+  transition: background 2s ease;
 }
 
 .rock-container {
@@ -50,11 +61,46 @@ body {
   height: auto;
   filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.8));
   transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
 }
 
 .rock-container:hover .rock-image {
-  transform: translateY(-5px);
+  transform: translateY(-8px) scale(1.02);
   filter: drop-shadow(0 40px 70px rgba(0, 0, 0, 0.9));
+}
+
+.rock-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--glow) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 1s ease;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.rock-speaking .rock-glow {
+  opacity: 1;
+  animation: glow-pulse 2s infinite ease-in-out;
+}
+
+@keyframes glow-pulse {
+
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.4;
+  }
+
+  50% {
+    transform: translate(-50%, -50%) scale(1.3);
+    opacity: 0.8;
+  }
 }
 
 .advice-text {
@@ -69,8 +115,9 @@ body {
   transition: opacity 0.8s ease, transform 0.8s ease;
   line-height: 1.6;
   letter-spacing: 0.02em;
-  color: rgba(0, 0, 0, 0.9);
-  text-shadow: 0 2px 4px rgba(178, 178, 178, 0.5);
+  color: var(--foreground);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-weight: 400;
 }
 
 .advice-text.visible {
@@ -97,6 +144,7 @@ body {
   bottom: 20px;
   text-align: center;
 }
+
 @keyframes pulse {
 
   0%,
@@ -108,6 +156,7 @@ body {
     opacity: 0.6;
   }
 }
+
 /* Loading/Speaking Animation */
 @keyframes shake {
   0% {

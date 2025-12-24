@@ -10,13 +10,18 @@ export default function Home() {
 
   useEffect(() => {
     setTimestamp(Date.now());
+
+    // Simple day/night theme detection
+    const hour = new Date().getHours();
+    const isDark = hour < 6 || hour > 18;
+    document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
   }, []);
 
   const handleRockClick = async () => {
     if (loading) return;
 
     setLoading(true);
-    setAdvice(''); // Clear previous advice or keep it? Clearing looks like "thinking".
+    setAdvice('');
 
     try {
       const res = await fetch('/api/advice', {
@@ -41,6 +46,7 @@ export default function Home() {
         className={`rock-container ${loading ? 'rock-speaking' : ''}`}
         onClick={handleRockClick}
       >
+        <div className="rock-glow"></div>
         <img
           src={`/rock.png${timestamp ? `?v=${timestamp}` : ''}`}
           alt="Rock"
@@ -58,7 +64,7 @@ export default function Home() {
         {loading ? 'Rock is thinking...' : 'Touch the Rock'}
       </div>
 
-      
+
     </main>
   );
 }
