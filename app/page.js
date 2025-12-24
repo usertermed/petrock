@@ -26,10 +26,10 @@ export default function Home() {
       if (data.advice) {
         setAdvice(data.advice);
       } else {
-        setAdvice("The rock is silent today.");
+        setAdvice("The rock is silent.");
       }
     } catch (error) {
-      setAdvice("The rock ignores you.");
+      setAdvice("The rock ignores you. (Error)");
     } finally {
       setLoading(false);
     }
@@ -43,7 +43,7 @@ export default function Home() {
       >
         <img
           src={`/rock.png${timestamp ? `?v=${timestamp}` : ''}`}
-          alt="Pet Rock"
+          alt="Rock"
           width={500}
           height={500}
           className="rock-image"
