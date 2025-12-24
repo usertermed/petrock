@@ -88,7 +88,8 @@ body {
   letter-spacing: 0.2em;
   color: rgba(0, 0, 0, 0.5);
   pointer-events: none;
-  animation: pulse 3s infinite;
+  animation: pulse 5s infinite;
+
 }
 
 @keyframes pulse {
@@ -102,7 +103,6 @@ body {
     opacity: 0.6;
   }
 }
-
 /* Loading/Speaking Animation */
 @keyframes shake {
   0% {
