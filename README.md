@@ -1,4 +1,5 @@
-# Rock Almighty
+# Rock Almighty ![GitHub branch status](https://img.shields.io/github/checks-status/usertermed/rockalmighty/main)
+
 rock of wisdom (?)
 
 uuh ok so basicallyy its a rock that gives you advice
