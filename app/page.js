@@ -51,7 +51,7 @@ export default function Home() {
       </div>
 
       <div className={`advice-text ${advice ? 'visible' : ''}`}>
-        {advice || "The rock is silent today."}
+        {advice || "..."}
       </div>
 
       <div className="instruction">
