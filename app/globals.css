@@ -81,7 +81,7 @@ body {
 .instruction {
   font-family: "Road Rage", sans-serif;
   position: absolute;
-  bottom: 70px;
+  bottom: 90px;
   font-size: 1.5rem;
   text-transform: uppercase;
   font-weight: 300;
@@ -92,6 +92,11 @@ body {
 
 }
 
+.fa-ban {
+  position: absolute;
+  bottom: 20px;
+  text-align: center;
+}
 @keyframes pulse {
 
   0%,

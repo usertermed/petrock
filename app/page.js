@@ -36,7 +36,7 @@ export default function Home() {
   };
 
   return (
-    <main className="container">
+    <main className="container" suppressHydrationWarning>
       <div
         className={`rock-container ${loading ? 'rock-speaking' : ''}`}
         onClick={handleRockClick}
@@ -53,10 +53,12 @@ export default function Home() {
       <div className={`advice-text ${advice ? 'visible' : ''}`}>
         {advice || "..."}
       </div>
-
+      <a href="https://user.is-a.dev" title="a project by usertermed"><i className="fa-solid fa-ban fa-spin" color="#00000080"></i></a>
       <div className="instruction">
         {loading ? 'Rock is thinking...' : 'Touch the Rock'}
       </div>
+
+      
     </main>
   );
 }
